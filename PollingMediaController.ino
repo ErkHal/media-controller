@@ -1,6 +1,18 @@
+/*
+ * This sketch uses HID library by NicoHood https://github.com/NicoHood/HID
+ * 
+ * Author Erkki Halinen 2018
+ * 
+ * Simple sketch that polls for button presses and 
+ * sends a media key press
+ * when a button is pressed.
+ */
 #include <HID-Project.h>
 #include <HID-Settings.h>
 
+/* 
+ *  You can modify these pinouts to suit your board layout
+ */
 int prevPin = 7;
 int playPausePin = 2;
 int nextPin = 3;
