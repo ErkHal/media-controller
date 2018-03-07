@@ -13,22 +13,33 @@
 /* 
  *  You can modify these pinouts to suit your board layout
  */
-int prevPin = 7;
-int playPausePin = 2;
-int nextPin = 3;
-int mutePin = 10;
+
+// Pro Micro pinout 
+int prevPin = 2;
+int playPausePin = 4;
+int nextPin = 9;
+
+int volDownPin = 21;
+int volUpPin = 10;
+int mutePin = 18;
 
 void setup() {
 
   pinMode(prevPin, INPUT);
   pinMode(playPausePin, INPUT);
   pinMode(nextPin, INPUT);
+  
   pinMode(mutePin, INPUT);
+  pinMode(volDownPin, INPUT);
+  pinMode(volUpPin, INPUT);
 
   digitalWrite(prevPin, HIGH);
   digitalWrite(playPausePin, HIGH);
   digitalWrite(nextPin, HIGH);
+  
   digitalWrite(mutePin, HIGH);
+  digitalWrite(volUpPin, HIGH);
+  digitalWrite(volDownPin, HIGH);
 
   Consumer.begin();
 
@@ -56,6 +67,18 @@ void loop() {
   if(digitalRead(mutePin) == 0) {
 
       Consumer.write(MEDIA_VOLUME_MUTE);
+      delay(200);
+    }
+    
+  if(digitalRead(volUpPin) == 0) {
+
+      Consumer.write(MEDIA_VOLUME_UP);
+      delay(200);
+    }
+    
+  if(digitalRead(volDownPin) == 0) {
+
+      Consumer.write(MEDIA_VOLUME_DOWN);
       delay(200);
     }
 }
