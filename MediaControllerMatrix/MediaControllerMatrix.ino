@@ -29,7 +29,6 @@ byte rowPins[ROWS] = {2, 3}; //connect to the row pinouts of the keypad
 byte colPins[COLS] = {21, 20, 19}; //connect to the column pinouts of the keypad
 
 Keypad customKeypad = Keypad(makeKeymap(hexaKeys), rowPins, colPins, ROWS, COLS); 
-customKeypad.
 
 void setup(){
   Consumer.begin();
@@ -43,6 +42,6 @@ void checkPressedKeys() {
   byte customKey = customKeypad.getKey();
   if (customKey){
     Consumer.write(customKey);
-    delay(500);
+    delay(250);
   }
 }
